@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:51:58 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/08 14:34:57 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/08 22:20:35 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,26 @@ char	*get_storage(char *storage)
 char	*get_line(char *storage)
 {
 	size_t	i;
-	int		nline;
 	char	*line;
 
 	i = 0;
-	nline = 0;
-	while (str[i++] && nline == 0)
+	while (str[i++])
 	{
 		if (str[i] == '\n')
-			nline = 1;
+			break ;
 	}
-	line = malloc(l + 1);
+	line = malloc(i + 1);
 	if (!line)
 		return (0);
 	i = 0;
-	nline = 0;
-	while (str[i] && nline == 0)
+	while (str[i])
 	{
 		line[i] = str[i];
 		if (str[i] == '\n')
-			nline = 1;
+		{
+			i++;
+			break ;
+		}
 		i++;
 	}
 	line[i] = '\0';
