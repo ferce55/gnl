@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:52:04 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/08 14:45:35 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/09 08:10:10 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ char	*ft_strjoin(const char *s1, const char *s2)
 			tmp[i++] = s1[j++];
 	}
 	j = 0;
-	while (i < tol_len && s2[j])
+	while (i < tot_len && s2[j])
 		tmp[i++] = s2[j++];
 	tmp[i] = '\0';
-	free(s1);
+	free((char *)s1);
 	return (tmp);
 }
