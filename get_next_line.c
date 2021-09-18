@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:51:58 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/09 13:27:17 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:51:21 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,25 @@ char	*get_line(char *str)
 {
 	size_t	i;
 	char	*line;
+	int		flag;
 
 	i = 0;
-	while (str[i++])
+	flag = 0;
+	while (str[i++] != '\0' && flag == 0)
 	{
 		if (str[i] == '\n')
-			break ;
+			flag = 1;
 	}
 	line = malloc(i + 1);
 	if (!line)
 		return (0);
 	i = 0;
-	while (str[i])
+	flag = 0;
+	while (str[i] != '\0' && flag == 0)
 	{
 		line[i] = str[i];
 		if (str[i] == '\n')
-		{
-			i++;
-			break ;
-		}
+			flag = 1;
 		i++;
 	}
 	line[i] = '\0';
@@ -130,49 +130,27 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int main()
+/*void bye()
+{
+	system("leaks -q a.out");
+}
+int main(int argc, char **argv)
 {
 	int	fd;
-	int	fd2;
-	int fd3;
+	int i = 0;
 	char *line;
-	char *line2;
-	char *line3;
-	fd = open("./gnlTester/files/42_no_nl", O_RDONLY);
-	fd2 = open("./gnlTester/files/empty", O_RDONLY);
-	fd3 = open("./gnlTester/files/nl", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
-	printf("l1: %s", line);
-	line2 = get_next_line(fd2);
-	printf("l2: %s", line2);
-	line3 = get_next_line(fd3);
-	printf("l3: %s", line3);
-	while (line != NULL || line2 != NULL || line3 != NULL)
+	while (line != NULL)
 	{
 		if (line != NULL)
 		{
-			printf("l1: %s", line);
+			printf("l%d: %s",  i++,line);
 			free(line);
 			line = get_next_line(fd);
 		}
-		if (line2 != NULL)
-		{
-			printf("l2: %s", line2);
-			free(line2);
-			line2 = get_next_line(fd2);
-		}
-		if (line3 != NULL)
-		{
-			printf("l3: %s", line3);
-			free(line3);
-			line3 = get_next_line(fd3);
-		}
 	}
-	//printf("%s", line);
-	//free(line);
 	close(fd);
-	close(fd2);
-	close(fd3);
-	//system("leaks -q a.out");
+	atexit(bye);
 	return (0);
 }*/
