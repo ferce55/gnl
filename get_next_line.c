@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 09:51:58 by rsarri-c          #+#    #+#             */
-/*   Updated: 2021/09/18 17:51:21 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2021/09/19 13:48:09 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,4 @@ int main(int argc, char **argv)
 	close(fd);
 	atexit(bye);
 	return (0);
-}*/
+} */
